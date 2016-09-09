@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lagou.companymgr.job.dao.dao.JobMapper">
+
+	<resultMap type="com.lagou.companymgr.job.dao.vo.Job" id="JobResultMap">
+		<id property="id" column="nid" />
+		<result property="positionName" column="positionName" />
+		<result property="positionType" column="positionType" />
+		<result property="department" column="department" />
+		<result property="jobNature" column="jobNature" />
+		<result property="salaryMin" column="salaryMin" />
+		<result property="salaryMax" column="salaryMax" />
+		<result property="workAddress" column="workAddress" />
+		<result property="workYear" column="workYear" />
+		<result property="education" column="education" />
+		<result property="positionAdvantage" column="positionAdvantage" />
+		<result property="positionDetail" column="positionDetail" />
+		<result property="positionAddress" column="positionAddress" />
+		<result property="email" column="email" />
+		<result property="date" column="date" />
+		<association property="c"
+			javaType="com.lagou.companymgr.company.dao.vo.Company">
+			<id property="id" column="cid" />
+			<association property="c"
+				javaType="com.lagou.companymgr.companymessage.vo.Companymessage">
+				<id property="id" column="mid" />
+				<result property="industry" column="industry" />
+				<result property="holename" column="holename" />
+				<result property="scale" column="scale" />
+				<result property="radio" column="radio" />
+				<result property="temptation" column="temptation" />
+			</association>
+			<association property="l" javaType="com.lagou.companymgr.label.dao.vo.Label">
+				<id column="id" property="cid" />
+				<result column="labels" property="labels" />
+			</association>
+			<association property="f"
+				javaType="com.lagou.companymgr.founder.vo.Founder">
+				<id column="id" property="cid" />
+				<result column="name" property="name" />
+			</association>
+		</association>
+
+	</resultMap>
+
+	<insert id="add" parameterType="com.lagou.companymgr.job.dao.vo.Job">
+		insert into newjob values
+		(null,#{cid},#{positionName},#{positionType},#{department},#{jobNature},#{salaryMin},
+		#{salaryMax},#{workAddress},#{workYear},#{education},#{positionAdvantage},#{positionDetail},
+		#{positionAddress},#{email},0,CURRENT_DATE ())
+	</insert>
+
+	<select id="query0" resultType="com.lagou.companymgr.job.dao.vo.Job">
+		select * from newjob where xiaxian=0;
+	</select>
+
+	<select id="query1" resultType="com.lagou.companymgr.job.dao.vo.Job">
+		select * from newjob where xiaxian=1;
+	</select>
+
+	<update id="updatexiaxian" parameterType="int">
+		update newjob set xiaxian=1 where id=#{id}
+	</update>
+
+	<update id="updateshangxian" parameterType="int">
+		update newjob set xiaxian=0 where id=#{id}
+	</update>
+
+	<delete id="del" parameterType="int">
+		delete from newjob where id = #{id}
+	</delete>
+
+	<select id="countjob0" resultType="int">
+		select count(id) from newjob
+		where xiaxian=0
+	</select>
+
+	<select id="countjob1" resultType="int">
+		select count(id) from newjob
+		where xiaxian=1
+	</select>
+
+	<update id="updatejob" parameterType="com.lagou.companymgr.job.dao.vo.Job">
+		update newjob set
+		positionName=#{positionName},positionType=#{positionType},department=#{department},
+		jobNature=#{jobNature},salaryMin=#{salaryMin},salaryMax=#{salaryMax},workAddress=#{workAddress},
+		workYear=#{workYear},=#{education},positionAdvantage=#{positionAdvantage},positionDetail=#{positionDetail},
+		positionAddress=#{positionAddress},email=#{email}
+		where id=#{id}
+	</update>
+
+	<select id="queryjob" resultType="com.lagou.companymgr.job.dao.vo.Job" parameterType="int">
+		select * from newjob where id=#{id}
+	</select>
+
+	<select id="querybyjob" parameterType="com.lagou.companymgr.job.dao.vo.Job"
+		resultMap="JobResultMap">
+		select n.id nid,n.positionName,n.department,n.jobNature,n.salaryMin,
+		n.salaryMax,n.positionType,
+		n.workAddress,n.workYear,n.education,n.positionAdvantage,
+		n.positionDetail,n.email,n.date,c.id,cm.id cmid,
+		cm.industry,cm.scale,cm.radio,cm.temptation,f.id fid,f.name,
+		l.id lid,l.labels,cm.holename
+		from newjob n,companymessage cm, company c,founder f,label l
+		where
+		n.cid=c.id and c.mid=cm.id and f.cid=c.id and l.cid=c.id and
+			n.xiaxian=0
+<!-- 			select * from newjob where xiaxian=0 -->
+		
+			<if test="positionName != null">
+<!-- 				and n.positionName=#{positionName} -->
+					and n.positionName like '%${positionName}%'
+			</if>
+			<if test="positionType !=null">
+				and n.positionType=#{positionType}
+			</if>
+	</select>
+	
+	
+	<select id="queryAll" resultType="Job">
+			select * from newjob	
+	</select>
+	
+
+</mapper>

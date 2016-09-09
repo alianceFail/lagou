@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.lagou.companymgr.bind.dao.dao.BindMapper">
+  
+  <insert id="addbind"  parameterType="com.lagou.companymgr.bind.dao.vo.Bind">
+	insert into bind values (null,#{holeName},#{tel},#{email},CURRENT_DATE(),#{cid})	
+</insert>
+
+ <delete id="delbind" parameterType="int" >
+ delete from bind where id = #{id}
+  </delete>
+</mapper>

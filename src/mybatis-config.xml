@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://www.mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<package name="com.lagou"/>
+	</typeAliases>
+	
+	<mappers>
+			<mapper resource="com/lagou/companymgr/company/dao/dao/CompanyMapper.xml"/>	
+			<mapper resource="com/lagou/companymgr/companymessage/dao/CompanymessageMapper.xml"/>
+			<mapper resource="com/lagou/companymgr/founder/dao/FounderMapper.xml"/>
+			<mapper resource="com/lagou/companymgr/label/dao/dao/LabelMapper.xml"/>
+			<mapper resource="com/lagou/companymgr/product/dao/ProductMapper.xml"/>
+			<mapper resource="com/lagou/companymgr/stage/dao/StageMapper.xml"/>
+			<mapper resource="com/lagou/companymgr/reported/dao/ReportMapper.xml"/>
+			<mapper resource="com/lagou/jianli/expectjob/dao/ExpectjobMapper.xml"/>
+			<mapper resource="com/lagou/jianli/workexperience/dao/WorkexperienceMapper.xml"/>
+			<mapper resource="com/lagou/jianli/projectexperience/dao/ProjectexperienceMapper.xml"/>
+			<mapper resource="com/lagou/jianli/educationbackground/dao/EducationbackgroundMapper.xml"/>
+			<mapper resource="com/lagou/jianli/description/dao/DescriptionMapper.xml"/>
+			<mapper resource="com/lagou/jianli/workshow/dao/WorksshowMapper.xml"/>
+			<mapper resource="com/lagou/login/user/dao/dao/UserMapper.xml"/>
+			<mapper resource="com/lagou/jianli/jianli/dao/JianliMapper.xml"/>
+			<mapper resource="com/lagou/companymgr/bind/dao/dao/BindMapper.xml"/>	
+			<mapper resource="com/lagou/companymgr/job/dao/dao/JobMapper.xml"/>	
+			<mapper resource="com/lagou/jianli/jobsub/dao/dao/JobsubMapper.xml"/>
+	</mappers>
+</configuration>

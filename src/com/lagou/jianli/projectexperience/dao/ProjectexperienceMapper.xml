@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lagou.jianli.projectexperience.dao.ProjectexperienceMapper" >
+<insert id="add" parameterType="Projectexperience" useGeneratedKeys="true" keyProperty="id">
+insert into projectexperience values(null,#{projectName},#{thePost},#{projectYearStart},#{projectMonthStart},#{projectYearEnd},#{projectMonthEnd},#{projectDescription})
+</insert>
+
+<update id="update" parameterType="Projectexperience">
+ update message set photo=#{photo} where id=#{id}
+</update>
+
+<select id="query" parameterType="int" resultType="Projectexperience">
+		select * from projectexperience where id=#{id}
+</select>
+
+</mapper>

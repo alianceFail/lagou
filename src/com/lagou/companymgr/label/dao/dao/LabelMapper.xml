@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lagou.companymgr.label.dao.dao.LabelMapper" >
+
+<!-- 	<insert id="add" parameterType="com.lagou.companymgr.label.dao.vo.Label" useGeneratedKeys = true, keyProperty = "id" >
+			insert into label(labels,cid) values (#{labels},#{cid})
+	</insert>
+	 -->
+<insert id="add" parameterType="com.lagou.companymgr.label.dao.vo.Label">
+			insert into label values (null,#{labels},#{cid})
+	</insert>
+	
+	<select id="queryByCompany" resultType="com.lagou.companymgr.label.dao.vo.Label"  parameterType="int">
+			select * from label where cid = #{cid}
+	</select>
+	
+	
+
+</mapper>

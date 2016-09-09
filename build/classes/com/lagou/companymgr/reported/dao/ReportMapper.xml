@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lagou.companymgr.reported.dao.ReportMapper" >
+ 	<insert id="add" parameterType="Reported" useGeneratedKeys="true" keyProperty="id">
+ 		insert into reported values(null,#{articleTitle},#{articleUrl},#{cid})
+ 	</insert>
+ 	
+<!--  	<update id="update" parameterType="Reported" > -->
+<!-- 		update company set companyProfile=#{companyProfile} where id=#{id}-->
+<!--  	</update> -->
+<select id="query" parameterType="int" resultType="Reported">
+	select * from reported where cid=#{cid}
+</select>
+</mapper>

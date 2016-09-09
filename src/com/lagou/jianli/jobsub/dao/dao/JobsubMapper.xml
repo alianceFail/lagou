@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lagou.jianli.jobsub.dao.dao.JobsubMapper" >
+
+<insert id="add" parameterType="com.lagou.jianli.jobsub.dao.vo.Jobsub">
+insert into jobsub values(null,#{email},#{sendMailPer},#{positionName},#{city},#{financeStage},#{industryField},#{salary},#{lid},curdate())
+</insert>
+
+<select id="query" parameterType="int" resultType="com.lagou.jianli.jobsub.dao.vo.Jobsub">
+	select * from jobsub where lid=#{lid}	
+</select>
+
+</mapper>

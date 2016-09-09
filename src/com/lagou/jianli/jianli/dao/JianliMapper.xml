@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.lagou.jianli.jianli.dao.JianliMapper">
+
+
+
+<insert id="add" parameterType="Jianli" useGeneratedKeys="true" keyProperty="id">
+		insert into jianli values(null,null,#{lid},null,null,null,null,null,null,null,curdate(),0,null,null)
+</insert>
+
+<select id="query" parameterType="int" resultType="Jianli">
+	select * from jianli where lid=#{lid}
+</select>
+
+<select id="queryid" parameterType="int" resultType="Jianli">
+	select * from jianli where id=#{id}
+</select>
+
+<update id="update" parameterType="Jianli">
+	update jianli set title=#{title} where id=#{id}
+</update>
+
+<update id="updateMid" parameterType="Jianli">
+	update jianli set mid=#{mid} where id=#{id}
+</update>
+
+<update id="updateFid" parameterType="Jianli">
+	update jianli set fid=#{fid} where id=#{id}
+</update>
+
+<update id="updateWid" parameterType="Jianli">
+	update jianli set wid=#{wid} where id=#{id}
+</update>
+
+<update id="updatePid" parameterType="Jianli">
+	update jianli set pid=#{pid} where id=#{id}
+</update>
+
+<update id="updateEid" parameterType="Jianli">
+	update jianli set eid=#{eid} where id=#{id}
+</update>
+
+<update id="updateDid" parameterType="Jianli">
+	update jianli set did=#{did} where id=#{id}
+</update>
+
+<update id="updateWsid" parameterType="Jianli">
+	update jianli set wsid=#{wsid} where id=#{id}
+</update>
+
+<update id="updateJianli" parameterType="Jianli">
+	update jianli set jianli=#{jianli},jianliUrl=#{jianliUrl} where id=#{id}
+</update>
+</mapper>

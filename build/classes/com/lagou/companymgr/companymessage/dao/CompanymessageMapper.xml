@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.lagou.companymgr.companymessage.dao.CompanymessageMapper">
+
+<insert id="add" parameterType="com.lagou.companymgr.companymessage.vo.Companymessage" useGeneratedKeys="true" keyProperty="id">
+insert into companymessage 
+values(null,#{holename},#{name},#{website},#{city},#{industry},#{scale},#{radio},#{temptation},#{logo})
+</insert>
+
+<select id="query" parameterType="int" resultType="Companymessage">
+	select * from companymessage where id=#{id}
+</select>
+
+</mapper>
